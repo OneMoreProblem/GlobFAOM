@@ -44,7 +44,7 @@
     ├── postProcessing                 
     │   ├── fieldValueDelta1           
     │   │   └── 0                       
-    │   │       └── fieldValueDelta.dat<---------------------------- Файл с результатами вычитания средних значений давления на входе и выходе
+    │   │       └── fieldValueDelta.dat<---- Файл с результатами вычитания средних значений давления на входе и выходе
     │   ├── fieldValueDelta1.region1   
     │   │   └── 0
     │   │       └── surfaceFieldValue.dat
