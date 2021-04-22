@@ -1,0 +1,1 @@
+Thu Apr 22 13:27:14 2021 by ryazanov in DESKTOP-422AT27 :Application: pyFoamPrepareCase.py --no-complain --quiet --no-write-parameters --no-write-report .  | with cwd /mnt/d/calc/GlobFOAM/ejectorCase  |  
