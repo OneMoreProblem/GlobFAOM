@@ -1,0 +1,29 @@
+functions{
+fieldValueDelta1
+{
+    // Mandatory entries (unmodifiable)
+    type            fieldValueDelta;
+    libs            (fieldFunctionObjects);
+
+    // Mandatory entries (runtime modifiable)
+    operation       subtract;
+    region1
+    {
+        inlet;
+    }
+    region2
+    {
+        outlet;
+    }
+
+    // Optional (inherited) entries
+    writeFields     false;
+    scalingFactor   1.0;
+    writePrecision  8;
+    writeToFile     true;
+    useUserTime     true;
+    enabled         true;
+    log             true;
+    timeStart       latestTime;
+}
+}

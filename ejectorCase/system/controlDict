@@ -1,0 +1,98 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     pisoFoam;
+
+startFrom       startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         0.1;
+
+deltaT          1e-05;
+
+writeControl    timeStep;
+
+writeInterval   10000;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
+
+functions{
+fieldValueDelta1
+{
+    // Mandatory entries (unmodifiable)
+    type            fieldValueDelta;
+    libs            (fieldFunctionObjects);
+
+    // Mandatory entries (runtime modifiable)
+    operation       subtract;
+
+    region1
+    {
+        type surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        log             false;
+        writeControl    timeStep;
+        writeFields     false;
+        regionType      patch;
+        name            inlet;
+        operation       average;
+        fields          ( p );
+
+    }
+    region2
+    {
+        type surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        log             false;
+        writeControl    timeStep;
+        writeFields     false;
+        regionType      patch;
+        name            outlet;
+        operation       average;
+        fields          ( p );
+
+    }
+
+    // Optional (inherited) entries
+    writeFields     false;
+    scalingFactor   1.0;
+    writePrecision  8;
+    writeControl    onEnd;
+    writeToFile     true;
+    useUserTime     true;
+    enabled         true;
+    log             true;
+//    timeStart       endTime;
+}
+}
+
+// ************************************************************************* //
