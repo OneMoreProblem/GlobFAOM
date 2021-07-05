@@ -21,7 +21,7 @@ results
     {
         scalar
         {
-            average(inlet,p) 112191.5913059967;
+            average(inlet,p) 112191.5913059954;
         }
     }
     fieldValueDelta1.region2
@@ -35,7 +35,7 @@ results
     {
         scalar
         {
-            subtract(average(inlet,p),average(outlet,p)) 112191.5913059967;
+            subtract(average(inlet,p),average(outlet,p)) 112191.5913059954;
         }
     }
 }

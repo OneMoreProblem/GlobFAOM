@@ -1,3 +1,5 @@
+Clearing /lustre/unicluster/home/d.ryazanov/git/GlobFOAM/ejectorCase/0.1
+Clearing /lustre/unicluster/home/d.ryazanov/git/GlobFOAM/ejectorCase/PyFoam.blockMesh.logfile
 /*---------------------------------------------------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
@@ -5,15 +7,15 @@
 |   \\  /    A nd           | Website:  www.openfoam.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
-Build  : _f3950763fe-20191219 OPENFOAM=1912
+Build  : v1912 OPENFOAM=1912
 Arch   : "LSB;label=32;scalar=64"
-Exec   : blockMesh -case /mnt/d/calc/GlobFOAM/ejectorCase
-Date   : Apr 22 2021
-Time   : 13:27:14
-Host   : DESKTOP-422AT27
-PID    : 4086
+Exec   : blockMesh -case /lustre/unicluster/home/d.ryazanov/git/GlobFOAM/ejectorCase
+Date   : Apr 27 2021
+Time   : 16:47:34
+Host   : bl020.unicluster.ru
+PID    : 3801
 I/O    : uncollated
-Case   : /mnt/d/calc/GlobFOAM/ejectorCase
+Case   : /lustre/unicluster/home/d.ryazanov/git/GlobFOAM/ejectorCase
 nProcs : 1
 trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
 fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
@@ -91,4 +93,3 @@ Patches
 
 End
 
-Getting LinuxMem: [Errno 2] No such file or directory: '/proc/4083/status'
