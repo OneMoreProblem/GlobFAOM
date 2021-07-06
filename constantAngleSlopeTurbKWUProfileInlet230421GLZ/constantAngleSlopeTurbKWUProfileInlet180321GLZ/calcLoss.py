@@ -37,16 +37,17 @@ def calcOneRMSE(HVRef, HVTmp):
 	return RMSE
 
 def waterVelocityExtract(U):
-	nMax = np.amax(np.argmax(U))
-	if nMax != U.size - 1:
-		nMax += 1
-	return U[:nMax]
+	it = np.nditer(U, flags=['f_index'], op_flags=['readwrite'])
+	for u in it:
+		if (it.index > 0 and u < U[it.index-1]):
+			u = 0
+	return U
 
 def main():
 	bounds = [[0.5, 1.0], [0.5, 2.5], [0.2, 0.8], [0.7, 1.0], [0.0, 0.15], [0.0, 0.15], [0.0, 1.0], [0.0, 1.0], [0.0, 1.0], [0.5, 1.5], [5.0, 15.0]]
 	coeffs = [0.85, 1.0, 0.5, 0.856, 0.075, 0.0828, 0.09, 0.5555556, 0.44, 0.31, 1.0, 10.0]
 #	coeffs = [0.09]
-	refFile = ("data/100621OutletSmoothProfile.csv")
+	refFile = ("data/180321OutletSmoothProfile.csv")
 	turbFile = ("postProcessing/singleGraph/0.5/line_U.xy")
 	dfHVRef = readHV(refFile)
 	dfHVPostProc = readHVPostProc(turbFile)

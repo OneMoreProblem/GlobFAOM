@@ -7,13 +7,13 @@ from functools import partial
 
 def readHV(fileName):
 	df = pd.read_csv(fileName, sep='\t', header=None)
-	HV = df.to_numpy()
+	HV = df.values
 	HV = normalizeHV(HV)
 	return HV
 
 def readHVPostProc(fileName):
 	df = pd.read_csv(fileName, sep='\t', header=None)
-	HV = df.iloc[:, [0,1]].to_numpy()
+	HV = df.iloc[:, [0,1]].values
 	HV = normalizeHV(HV)
 	return HV
 
@@ -37,10 +37,11 @@ def calcOneRMSE(HVRef, HVTmp):
 	return RMSE
 
 def waterVelocityExtract(U):
-	nMax = np.amax(np.argmax(U))
-	if nMax != U.size - 1:
-		nMax += 1
-	return U[:nMax]
+	it = np.nditer(U, flags=['f_index'], op_flags=['readwrite'])
+	for u in it:
+		if (it.index > 0 and u < U[it.index-1]):
+			u = 0
+	return U
 
 def main():
 	bounds = [[0.5, 1.0], [0.5, 2.5], [0.2, 0.8], [0.7, 1.0], [0.0, 0.15], [0.0, 0.15], [0.0, 1.0], [0.0, 1.0], [0.0, 1.0], [0.5, 1.5], [5.0, 15.0]]
