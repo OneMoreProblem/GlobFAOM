@@ -9,10 +9,21 @@
 singleGraph
 {
     start   (0.59 0.0025 0.000);
-    end     (0.59 0.0025 0.015);
+    end     (0.59 0.0025 0.010);
     fields  (U);
 
-    #includeEtc "caseDicts/postProcessing/graphs/sampleDict.cfg"
+//    #includeEtc "caseDicts/postProcessing/graphs/sampleDict.cfg"
+	interpolationScheme cellPoint;
+
+	setFormat   raw;
+	
+	setConfig
+	{
+	    type    uniform;   // midPoint, midPointAndFace
+	    axis    distance;  // x, y, z, xyz
+	    nPoints 30;
+	}
+
 
     setConfig
     {
@@ -20,7 +31,22 @@ singleGraph
     }
 
     // Must be last entry
-    #includeEtc "caseDicts/postProcessing/graphs/graph.cfg"
+//    #includeEtc "caseDicts/postProcessing/graphs/graph.cfg"
+	type            sets;
+	libs            ("libsampling.so");
+	
+	writeControl    writeTime;
+	
+	sets
+	(
+	    line
+	    {
+	        $setConfig;
+	        start $start;
+	        end   $end;
+	    }
+	);
+
 }
 
 // ************************************************************************* //
