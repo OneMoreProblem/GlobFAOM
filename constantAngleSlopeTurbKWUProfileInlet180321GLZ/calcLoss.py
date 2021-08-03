@@ -21,6 +21,7 @@ def readHVPostProc(fileName):
 	try:
 		df = pd.read_csv(fileName, sep='\t', header=None)
 		HV = df.iloc[:, [0,1]].to_numpy()
+		HV[0,1] = 0.0
 		HV = normalizeHV(HV)
 	except:
 		H = np.arange(0, 10, 0.1, dtype=float)
